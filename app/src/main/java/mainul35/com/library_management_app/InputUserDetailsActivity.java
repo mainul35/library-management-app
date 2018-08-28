@@ -30,13 +30,13 @@ public class InputUserDetailsActivity extends AppCompatActivity {
                 && (etPassword!=null && !etPassword.getText().toString().isEmpty())
                 ) {
             if(userService.findUserByUsername("mainul35")==null) {
-                userService.create(new User(1, etName.getText().toString(), etUsername.getText().toString(), etPassword.getText().toString(), 1));
-            }else{
                 User user = new User();
                 user.setName(etName.getText().toString());
                 user.setName(etUsername.getText().toString());
                 user.setName(etPassword.getText().toString());
                 userService.update(user);
+            }else{
+                userService.create(new User(1, etName.getText().toString(), etUsername.getText().toString(), etPassword.getText().toString(), 1));
             }
             Intent intent = new Intent(InputUserDetailsActivity.this, AddUserActivity.class);
             intent.putExtra("username", intent.getStringExtra("username"));
