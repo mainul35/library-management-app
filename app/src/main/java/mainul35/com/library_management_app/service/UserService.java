@@ -28,10 +28,10 @@ public class UserService {
         this.open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("id", user.getId());
-        contentValues.put("id", user.getId());
-        contentValues.put("id", user.getId());
-        contentValues.put("id", user.getId());
-        contentValues.put("id", user.getId());
+        contentValues.put("name", user.getName());
+        contentValues.put("username", user.getUsername());
+        contentValues.put("password", user.getPassword());
+        contentValues.put("userType", user.getUserType());
         Long status = db.insert(DDL.TBL_USER, null, contentValues);
         this.close();
         return status > 0 ? true : false;

@@ -5,7 +5,6 @@ public class User {
     private String name;
     private String username;
     private String password;
-    private byte[] image;
     private int userType;
 
     public int getId() {
@@ -40,14 +39,6 @@ public class User {
         this.password = password;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
     public int getUserType() {
         return userType;
     }
@@ -56,5 +47,14 @@ public class User {
         this.userType = userType;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userType=" + userType +
+                '}';
+    }
 }

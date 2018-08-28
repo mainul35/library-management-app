@@ -7,8 +7,7 @@ public class DDL {
             + "name String,"
             + "username String,"
             + "password String,"
-            + "userType integer,"
-            + "image blob"
+            + "userType integer"
             + ")";
 
     public static final String CREATE_TABLE_BOOK = "CREATE TABLE book("
