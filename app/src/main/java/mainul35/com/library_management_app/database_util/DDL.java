@@ -16,9 +16,8 @@ public class DDL {
             + "author_name String,"
             + "isbn String,"
             + "publication String,"
-            + "publishing_date` DATETIME,"
-            + "edition String,"
-            + "image blob"
+            + "publishing_date String,"
+            + "edition String"
             + ")";
 
     public static final String CREATE_TABLE_COMMENTS = "CREATE TABLE comments("

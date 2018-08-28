@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AdminHome" />
+        <activity android:name=".UserActivity" />
+        <activity android:name=".InputBookDetailsActivity" />
+        <activity android:name=".AddBookActivity" />
+        <activity android:name=".AddUserActivity" />
+        <activity android:name=".InputUserDetailsActivity"></activity>
     </application>
 
 </manifest>
