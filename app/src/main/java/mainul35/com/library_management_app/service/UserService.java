@@ -13,7 +13,7 @@ public class UserService {
     private LibraryDatabaseHelper helper;
     private SQLiteDatabase db;
 
-    UserService(Context context) {
+    public UserService(Context context) {
         helper = new LibraryDatabaseHelper(context);
     }
 
@@ -42,23 +42,26 @@ public class UserService {
         // get readable database as we are not inserting anything
         this.open();
 
-//        Cursor cursor = db.query(Note.TABLE_NAME,
-//                new String[]{Note.COLUMN_ID, Note.COLUMN_NOTE, Note.COLUMN_TIMESTAMP},
-//                Note.COLUMN_ID + "=?",
-//                new String[]{String.valueOf(id)}, null, null, null, null);
-//
-//        if (cursor != null)
-//            cursor.moveToFirst();
-//
-//        // prepare note object
-//        Note note = new Note(
-//                cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)),
-//                cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE)),
-//                cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
+        Cursor cursor = db.query("user",
+                new String[]{"id", "name", "username", "password", "userType"},
+                "id" + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
 
-        // close the db connection
-//        cursor.close();
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        // prepare note object
+        User user = new User(
+                cursor.getInt(cursor.getColumnIndex("id")),
+                cursor.getString(cursor.getColumnIndex("name")),
+                cursor.getString(cursor.getColumnIndex("username")),
+                cursor.getString(cursor.getColumnIndex("password")),
+                cursor.getInt(cursor.getColumnIndex("userType"))
+                        );
+
+//         close the db connection
+        cursor.close();
         this.close();
-        return null;
+        return user;
     }
 }
