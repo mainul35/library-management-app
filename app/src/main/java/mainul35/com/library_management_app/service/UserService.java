@@ -2,6 +2,7 @@ package mainul35.com.library_management_app.service;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import mainul35.com.library_management_app.database_util.DDL;
@@ -35,5 +36,29 @@ public class UserService {
         Long status = db.insert(DDL.TBL_USER, null, contentValues);
         this.close();
         return status > 0 ? true : false;
+    }
+
+    public User findUserById(int id) {
+        // get readable database as we are not inserting anything
+        this.open();
+
+//        Cursor cursor = db.query(Note.TABLE_NAME,
+//                new String[]{Note.COLUMN_ID, Note.COLUMN_NOTE, Note.COLUMN_TIMESTAMP},
+//                Note.COLUMN_ID + "=?",
+//                new String[]{String.valueOf(id)}, null, null, null, null);
+//
+//        if (cursor != null)
+//            cursor.moveToFirst();
+//
+//        // prepare note object
+//        Note note = new Note(
+//                cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)),
+//                cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE)),
+//                cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
+
+        // close the db connection
+//        cursor.close();
+        this.close();
+        return null;
     }
 }
