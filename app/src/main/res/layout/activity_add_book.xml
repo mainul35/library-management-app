@@ -14,21 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/list_view"></ListView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:orientation="horizontal"
-        android:onClick="addNewBook">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_add_box_black_24dp"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Add Item"
-            android:textSize="20sp"
-            android:gravity="center_vertical"/>
-    </LinearLayout>
-</LinearLayout>
+        android:onClick="addNewBook"/>
+ </LinearLayout>

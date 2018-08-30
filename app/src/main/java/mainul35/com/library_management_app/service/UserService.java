@@ -49,7 +49,7 @@ public class UserService {
 //        contentValues.put("username", user.getUsername());
         contentValues.put("password", user.getPassword());
 //        contentValues.put("userType", user.getUserType());
-        db.update(DDL.TBL_USER, contentValues, "username="+ user.getUsername(), null);
+        db.update(DDL.TBL_USER, contentValues, "username='"+ user.getUsername()+"'; ", null);
         this.close();
     }
 

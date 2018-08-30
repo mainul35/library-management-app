@@ -3,6 +3,7 @@ package mainul35.com.library_management_app;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class InputUserDetailsActivity extends AppCompatActivity {
         etName = findViewById(R.id.etInputName);
         etUsername = findViewById(R.id.etInputUsername);
         etPassword = findViewById(R.id.etInputPassword);
+
     }
 
     public void register(View view) {
@@ -29,15 +31,21 @@ public class InputUserDetailsActivity extends AppCompatActivity {
                 && (etUsername!=null && !etUsername.getText().toString().isEmpty())
                 && (etPassword!=null && !etPassword.getText().toString().isEmpty())
                 ) {
-            if(userService.findUserByUsername("mainul35")==null) {
-                User user = new User();
-                user.setName(etName.getText().toString());
-                user.setName(etUsername.getText().toString());
-                user.setName(etPassword.getText().toString());
-                userService.update(user);
-            }else{
-                userService.create(new User(1, etName.getText().toString(), etUsername.getText().toString(), etPassword.getText().toString(), 1));
-            }
+            Log.e("User", "register: User = "+userService.findUserByUsername(etUsername.getText().toString()) );
+
+                if(userService.findUserByUsername(etUsername.getText().toString()) instanceof User){
+                    User user1 = new User();
+                    user1.setName(etName.getText().toString());
+                    user1.setUsername(etUsername.getText().toString());
+                    user1.setPassword(etPassword.getText().toString());
+                    userService.update(user1);
+                    Toast.makeText(this, "User with username '"+user1.getUsername()+"' Updated.", Toast.LENGTH_LONG).show();
+                }else{
+                    userService.create(new User(1, etName.getText().toString(), etUsername.getText().toString(), etPassword.getText().toString(), 1));
+                    Toast.makeText(this, "New user created with username '"+etUsername.getText().toString()+"'.", Toast.LENGTH_SHORT).show();
+                }
+
+
             Intent intent = new Intent(InputUserDetailsActivity.this, AddUserActivity.class);
             intent.putExtra("username", intent.getStringExtra("username"));
             startActivity(intent);
